@@ -1,0 +1,8 @@
+beautifulsoup4
+Flask
+requests
+mysql-connector-python
+python-dotenv
+
+
+-e .
