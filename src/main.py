@@ -224,5 +224,68 @@ def save_filtered_data_to_db():
     except Exception as e:
         logging.error(f"An error occurred: {e}")
         raise CustomException(e, sys)
+    
+def extract_recent_filtered_data():
+    try:
+        mydb = connect_to_mysql_database(host, user, password, database)
+        logging.info("Connected to the MySQL database successfully.")
+        
+        cursor = create_cursor_object(mydb)
+        
+        recent_data_query = "SELECT * FROM linkedin2.job_filtered_data WHERE TIMESTAMP(CONCAT(DATE, ' ', TIME)) >= %s"
+        logging.info(f"Executing SQL query: {recent_data_query}")
+    
+        threshold_datetime = datetime.utcnow() - timedelta(seconds=20)
+        threshold_time_str = threshold_datetime.strftime("%Y-%m-%d %H:%M:%S")
+        
+        cursor.execute(recent_data_query, (threshold_time_str,))
+        
+        recent_filtered_data = cursor.fetchall()
+        logging.info(f"Fetched {len(recent_filtered_data)} records from the database.")
+
+        cursor.close()
+        mydb.close()
+        logging.info("DB connection closed.")
+        
+        return recent_filtered_data
+
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+        raise CustomException(e, sys)
+
+def recent_filtered_data_to_csv(recent_filtered_data):
+    try:
+        if recent_filtered_data:
+            column_names = ["ID", "DATE", "TIME", "ROLE", "COMPANY_NAME", "LOCATION", "LINK"]
+            df = pd.DataFrame(recent_filtered_data, columns=column_names)
+
+            folder_name = "Filtered_Recent_Data"
+            os.makedirs(folder_name, exist_ok=True)
+
+            current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            csv_file_path = os.path.join(folder_name, f"{current_datetime}.csv")
+
+            df.to_csv(csv_file_path, index=False)
+            logging.info(f"Recent filtered job data has been saved to {csv_file_path}")
+        else:
+            logging.info("No recent filtered data found to save.")
+
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+        raise CustomException(e, sys)
+
+    
+final_url = make_url()
+
+job_data = scrape_job_data(final_url)
+save_data_into_db(job_data)
+recent_data = recent_scrapped_data()
+
+save_filtered_data_to_db()
+recent_filtered_data = extract_recent_filtered_data()
+
+# Save both recent data and recent filtered data to CSV files
+recent_scrapped_data_to_csv(recent_data)
+recent_filtered_data_to_csv(recent_filtered_data)
 
     
