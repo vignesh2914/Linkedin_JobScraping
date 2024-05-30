@@ -1,20 +1,37 @@
-# web scraper project NO SELENIUM
-
-# NOTE - Simple and easy version
-
-Hi all this is an updated and simple version of webscraping my previous version was using selinium that was working good but it was bit complicated process
-
-# ------------In this version u can fetch------------------
-
----->job title
----->location
----->role
----->link
+# Web Scraper Project - No Selenium
+This project is completely for education purpose 
 
 
-Into an CSV file That will be saved in ur respective folder where do u done the code
+Welcome to the simplified version of our web scraping project! Unlike the previous version that used Selenium, this version is straightforward and easy to use.
 
-HAPPY CODING HAVE FUN BY scraping !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+## Features
 
-FORK and star it if your really interested
-and i made some changes in url now user willl give any type of linkedin url as per him/her preferense
+This scraper allows you to fetch the following details from LinkedIn job listings:
+
+- **Job Title**
+- **Location**
+- **Role**
+- **Link**
+
+These details will be saved into a CSV file in the directory where you run the code.
+
+## Usage
+
+1. **Clone the Repository**: Start by cloning this repository to your local machine.
+
+This scraper is designed to work with various LinkedIn URLs based on your preference.
+
+# Happy Coding!
+We hope you enjoy using this simplified web scraper. If you find it useful, please fork the repository and give it a star!
+
+Happy Scraping! 🎉
+
+# Contributing
+If you have any suggestions or improvements, feel free to submit a pull request. Let's make web scraping fun and accessible for everyone!
+
+Fork and star this project if you find it helpful and want to stay updated with future improvements. Your feedback and contributions are greatly appreciated!
+
+
+
+
+
