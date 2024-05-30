@@ -15,3 +15,6 @@ Hi all this is an updated and simple version of webscraping my previous version 
 Into an CSV file That will be saved in ur respective folder where do u done the code
 
 HAPPY CODING HAVE FUN BY scraping !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+FORK and star it if your really interested
+and i made some changes in url now user willl give any type of linkedin url as per him/her preferense
