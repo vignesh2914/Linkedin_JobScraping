@@ -20,10 +20,10 @@ class JobScraper:
     def __init__(self):
         load_dotenv()
         self.base_url = {
-            1: 'https://www.linkedin.com/jobs/search/?keywords={}&location={}&origin=JOB_SEARCH_PAGE_LOCATION_HISTORY&refresh=true',
-            2: 'https://www.linkedin.com/jobs/search/?f_TPR=r2592000&keywords={}&location={}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true',
-            3: 'https://www.linkedin.com/jobs/search/?f_TPR=r604800&keywords={}&location={}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true',
-            4: 'https://www.linkedin.com/jobs/search/?f_TPR=r86400&keywords={}&location={}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true'
+            1: 'Your url location ={} role = {} analyse it',
+            2: 'Your url location ={} role = {} analyse it',
+            3: 'Your url location ={} role = {} analyse it',
+            4: 'Your url location ={} role = {} analyse it'
         }
         self.host = os.getenv("database_host_name")
         self.user = os.getenv("database_user_name")
