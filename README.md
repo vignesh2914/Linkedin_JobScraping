@@ -1,4 +1,4 @@
-# web scraper project
+# web scraper project NO SELENIUM
 
 # NOTE - Simple and easy version
 
