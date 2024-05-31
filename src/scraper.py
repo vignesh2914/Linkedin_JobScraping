@@ -59,15 +59,15 @@ class JobScraper:
                     time.sleep(10)
                     continue
                 soup = bs(response.content, 'html.parser')
-                jobs = soup.find_all('div', class_='base-card relative w-full hover:no-underline focus:no-underline base-card--link base-search-card base-search-card--link job-search-card')
+                jobs = soup.find_all(class_='')
                 if not jobs:
                     logging.info("No more jobs found.")
                     break
                 for job in jobs:
-                    job_title = job.find('', class_='').text.strip()
-                    job_company = job.find('', class_='').text.strip()
-                    job_location = job.find('', class_='').text.strip()
-                    job_link = job.find('', class_='')
+                    job_title = job.find('',class_='').text.strip()
+                    job_company = job.find('',class_='').text.strip()
+                    job_location = job.find('',class_='').text.strip()
+                    job_link = job.find'',(class_='')
                     
                     job_data.append({
                     'ROLE': job_title,
