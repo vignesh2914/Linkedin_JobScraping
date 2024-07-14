@@ -4,6 +4,11 @@ This project is completely for education purpose
 
 Welcome to the simplified version of our web scraping project! Unlike the previous version that used Selenium, this version is straightforward and easy to use.
 
+
+# Output ss
+
+![Screenshot](https://github.com/vignesh2914/Naukri_Job_scraping_tool/blob/main/images/output1.png)
+
 ## Features
 
 This scraper allows you to fetch the following details from LinkedIn job listings:
