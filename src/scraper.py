@@ -59,15 +59,15 @@ class JobScraper:
                     time.sleep(10)
                     continue
                 soup = bs(response.content, 'html.parser')
-                jobs = soup.find_all('div', class_='base-card relative w-full hover:no-underline focus:no-underline base-card--link base-search-card base-search-card--link job-search-card')
+                jobs = soup.find_all(class_='')
                 if not jobs:
                     logging.info("No more jobs found.")
                     break
                 for job in jobs:
-                    job_title = job.find('h3', class_='base-search-card__title').text.strip()
-                    job_company = job.find('h4', class_='base-search-card__subtitle').text.strip()
-                    job_location = job.find('span', class_='job-search-card__location').text.strip()
-                    job_link = job.find('a', class_='base-card__full-link')['href']
+                    job_title = job.find('',class_='').text.strip()
+                    job_company = job.find('',class_='').text.strip()
+                    job_location = job.find('',class_='').text.strip()
+                    job_link = job.find'',(class_='')
                     
                     job_data.append({
                     'ROLE': job_title,
@@ -80,15 +80,6 @@ class JobScraper:
                     if page_number % 50 == 0:
                         logging.info("Taking a break after fetching 50 records. Sleeping for 30 seconds.")
                         time.sleep(30)
-            except requests.exceptions.HTTPError as e:
-                if response.status_code == 429:
-                    logging.info("Rate limit exceeded. Waiting for 10 seconds before retrying...")
-                    time.sleep(10)
-                    continue
-                else:
-                    logging.error(f"An error occurred: {e}")
-                    logging.info("Data fetching completed.")
-        return job_data
     
     def create_dataframe_of_job_data(self, job_data: List[Dict[str, str]]) -> pd.DataFrame:
         try:
