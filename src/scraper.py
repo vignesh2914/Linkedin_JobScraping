@@ -20,10 +20,10 @@ class JobScraper:
     def __init__(self):
         load_dotenv()
         self.base_url = {
-            1: 'Your url location ={} role = {} analyse it',
-            2: 'Your url location ={} role = {} analyse it',
-            3: 'Your url location ={} role = {} analyse it',
-            4: 'Your url location ={} role = {} analyse it'
+            1: 'Your url location ={} role = {} inspect it',
+            2: 'Your url location ={} role = {} inspect it',
+            3: 'Your url location ={} role = {} inspect it',
+            4: 'Your url location ={} role = {} inspect it'
         }
         self.host = os.getenv("database_host_name")
         self.user = os.getenv("database_user_name")
@@ -52,6 +52,7 @@ class JobScraper:
         while page_number < max_pages and time.time() - start_time <= time_limit:
             next_page = f"{job_url}&start={page_number * 25}"
             response = requests.get(next_page)
+            
             try:
                 response.raise_for_status()
                 if response.status_code == 429:
@@ -67,7 +68,7 @@ class JobScraper:
                     job_title = job.find('',class_='').text.strip()
                     job_company = job.find('',class_='').text.strip()
                     job_location = job.find('',class_='').text.strip()
-                    job_link = job.find'',(class_='')
+                    job_link = job.find('',class_='')
                     
                     job_data.append({
                     'ROLE': job_title,
@@ -80,6 +81,9 @@ class JobScraper:
                     if page_number % 50 == 0:
                         logging.info("Taking a break after fetching 50 records. Sleeping for 30 seconds.")
                         time.sleep(30)
+            except Exception as e:
+                logging.error(f"An error occurred: {e}")
+                raise CustomException(e, sys)
     
     def create_dataframe_of_job_data(self, job_data: List[Dict[str, str]]) -> pd.DataFrame:
         try:
