@@ -7,7 +7,7 @@ Welcome to the simplified version of our web scraping project! Unlike the previo
 
 # Output ss
 
-![Screenshot](https://github.com/vignesh2914/Naukri_Job_scraping_tool/blob/main/images/output1.png)
+![Screenshot](https://github.com/vignesh2914/Linkedin_JobScraping/blob/main/images/output1.png)
 
 ## Features
 
